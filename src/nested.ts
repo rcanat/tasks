@@ -29,7 +29,11 @@ export function findQuestion(
     questions: Question[],
     id: number,
 ): Question | null {
-    return null;
+    return questions.reduce(
+        (found: Question | null, q: Question) =>
+            (found = q.id === id ? q : found),
+        null,
+    );
 }
 
 /**
