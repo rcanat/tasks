@@ -178,7 +178,18 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType,
 ): Question[] {
-    return [];
+    return questions.map((q: Question) =>
+        q.id === targetId ?
+            {
+                ...q,
+                type: newQuestionType,
+                options:
+                    newQuestionType === "short_answer_question" ?
+                        []
+                    :   q.options,
+            }
+        :   q,
+    );
 }
 
 /**
@@ -196,9 +207,7 @@ export function editOption(
     targetId: number,
     targetOptionIndex: number,
     newOption: string,
-): Question[] {
-    return [];
-}
+): Question[] {}
 
 /***
  * Consumes an array of questions, and produces a new array based on the original array.
