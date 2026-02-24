@@ -84,7 +84,22 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    return questions.reduce(
+        (csv: string, q: Question) =>
+            csv.concat(
+                "\n",
+                q.id.toString(),
+                ",",
+                q.name,
+                ",",
+                q.options.length.toString(),
+                ",",
+                q.points.toString(),
+                ",",
+                q.published.toString(),
+            ),
+        "id,name,options,points,published",
+    );
 }
 
 /**
