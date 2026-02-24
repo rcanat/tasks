@@ -192,6 +192,24 @@ export function changeQuestionTypeById(
     );
 }
 
+// Helper function for editOption()
+function editQuestionOption(
+    question: Question,
+    targetOptionIndex: number,
+    newOption: string,
+): Question {
+    if (targetOptionIndex === -1)
+        return { ...question, options: [...question.options, newOption] };
+    return {
+        ...question,
+        options: [
+            ...question.options.slice(0, targetOptionIndex),
+            newOption,
+            ...question.options.slice(targetOptionIndex + 1),
+        ],
+    };
+}
+
 /**
  * Consumes an array of Questions and produces a new array of Questions, where all
  * the Questions are the same EXCEPT for the one with the given `targetId`. That
@@ -207,7 +225,13 @@ export function editOption(
     targetId: number,
     targetOptionIndex: number,
     newOption: string,
-): Question[] {}
+): Question[] {
+    return questions.map((q: Question) =>
+        q.id === targetId ?
+            editQuestionOption(q, targetOptionIndex, newOption)
+        :   q,
+    );
+}
 
 /***
  * Consumes an array of questions, and produces a new array based on the original array.
