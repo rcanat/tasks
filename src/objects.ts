@@ -74,7 +74,12 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    const header = "# ".concat(question.name, "\n", question.body);
+    if (question.options.length === 0) return header;
+    return question.options.reduce(
+        (acc: string, s: string) => acc.concat("\n- ", s),
+        header,
+    );
 }
 
 /**
