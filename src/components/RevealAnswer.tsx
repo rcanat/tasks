@@ -7,9 +7,11 @@ export function RevealAnswer(): React.JSX.Element {
     function reveal() {
         setVisible(!visible);
     }
+
     return (
         <div>
             <Button onClick={reveal}>Reveal Answer</Button>
+            {visible && <p>42</p>}
         </div>
     );
 }
