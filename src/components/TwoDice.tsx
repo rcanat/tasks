@@ -15,8 +15,6 @@ export function TwoDice(): React.JSX.Element {
     const [leftDie, setLeftDie] = useState<number>(1);
     const [rightDie, setRightDie] = useState<number>(2);
 
-    const message = leftDie === rightDie ? "Win" : "Lose";
-
     return (
         <div>
             <Button
@@ -37,7 +35,7 @@ export function TwoDice(): React.JSX.Element {
             <span data-testid="left-die">{leftDie}</span>
             <span> </span>
             <span data-testid="right-die">{rightDie}</span>
-            <p>{message}</p>
+            {leftDie === rightDie && <p>{leftDie === 1 ? "Lose" : "Win"}</p>}
         </div>
     );
 }
