@@ -15,7 +15,7 @@ function App(): React.JSX.Element {
                 <br></br>
                 Ryan Canatella
             </header>
-            <hr></hr>
+            <hr />
             <Counter></Counter>
             <hr />
             <RevealAnswer></RevealAnswer>
